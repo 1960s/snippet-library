@@ -1,0 +1,38 @@
+
+<input type="file" id="input" onchange="handleFiles(this)" multiple>
+<br>
+<span id ="lug"></span>
+
+<script>
+
+  function handleFiles(input) {
+    let arr = []
+
+    let lug = document.getElementById("lug")
+    
+    let fileList = input.files; /* now you can work with the file list */
+
+    for (let i = 0; i < fileList.length; i++) {
+
+     let reader = new FileReader()
+       
+       reader.readAsText(fileList[i])
+      
+               reader.onload = function() {
+                
+                arr.push(`${reader.result}`)
+                 console.log(reader.result)
+             
+                        console.log(arr)
+               lug.innerText = arr.join("\n")
+
+      };
+      
+    }
+    
+
+  } 
+
+
+</script>
+
